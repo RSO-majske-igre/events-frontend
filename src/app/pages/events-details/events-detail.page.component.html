@@ -1,10 +1,7 @@
 <main class="p-4">
   <form [formGroup]="eventFormGroup" (ngSubmit)="onSubmit()">
     <div class="field">
-      <label class="label">Event id</label>
-      <div class="control">
-        <input class="input is-disabled" formControlName="id">
-      </div>
+      <label class="label">Event id: {{event?.id}}</label>
     </div>
 
     <div class="field">
@@ -42,7 +39,15 @@
       </div>
     </div>
 
-    <button type="submit" class="button is-fullwidth is-primary">Shrani dogodek</button>
+    <h2 class="subtitle is-3">Lokacija dokodka</h2>
+    <div class="field">
+      <label class="label">Ime lokacije</label>
+      <div class="control">
+        <input class="input is-disabled" type="text" formControlName="locationName">
+      </div>
+    </div>
+
+    <button type="submit" class="button is-fullwidth is-primary mt-6 mb-6">Shrani dogodek</button>
   </form>
 
 

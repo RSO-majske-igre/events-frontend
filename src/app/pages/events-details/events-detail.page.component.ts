@@ -58,5 +58,5 @@ export class EventsDetailPageComponent implements OnInit {
       geoLon: new FormControl(object?.geoLon ?? ''),
     });
 
-  onSubmit = () => this.eventsApiService.upsertEvent(this.eventFormGroup.value as EventDto).subscribe(e => this.router.navigate(['/events', e.id]));
+  onSubmit = () => this.eventsApiService.upsertEvent(this.eventFormGroup.value as EventDto).subscribe(e => this.router.navigate(['/events']));
 }
