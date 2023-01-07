@@ -1,0 +1,42 @@
+<main class="p-4" [ngSwitch]="componentState">
+  <div *ngSwitchCase="'loaded'">
+    <nav class="pagination" role="navigation" aria-label="pagination">
+      <ul class="pagination-list">
+        <li *ngFor="let page of getPagesForPagination()">
+          <a class="pagination-link" [ngClass]="{'is-current': page === currentPage}" (click)="getEvents(page)" >{{page}}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div *ngFor="let event of events" class="mb-3 box">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <h1 class="title is-3">{{event.eventName}}</h1>
+          <div class="buttons">
+            <button class="button is-warning">
+              Uredi
+            </button>
+          </div>
+        </div>
+        <div>
+          Lokacija: <b>{{event.locationName}}</b>
+        </div>
+        <div>
+          Datum začetka: <b>{{event.startTime | date : 'dd. MM. YYYY HH:mm'}}</b>
+        </div>
+        <div>
+          Cena: <b>{{event.fee | currency : 'EUR'}}</b>
+        </div>
+        <div>
+          Opis: <b>{{event.description}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'loading'">
+    Nalagam
+  </div>
+  <div *ngSwitchCase="'error'">
+    Napaka pri pridobivanju podatkov
+  </div>
+</main>
