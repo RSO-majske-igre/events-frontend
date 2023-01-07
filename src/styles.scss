@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #29282c;
+$info: #547aa0;
+$success: #3A9260;
+$warning: #f7bb0e;
+$danger: #8D1416;
+$light: #ccc;
+$dark: #444;
+$background-color: #f4f4f4;
+
+// Import the Bulma-fluent
+@import "bulma/bulma.sass";
+
+@import "remixicon/fonts/remixicon.css";
+
+.header-1 {
+  @extend .title, .is-1;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.subheader-1 {
+  @extend .subtitle, .is-2;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.header-2 {
+  @extend .title, .is-2;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.subheader-2 {
+  @extend .subtitle, .is-2;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.subheader-3 {
+  @extend .subtitle, .is-3;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+main {
+  background-color: $background-color;
+}
+
+router-outlet {
+  background-color: $background-color;
+}
+
+
+.mat-typography {
+  background-color: $background-color;
+}
+
+.bg-transparent {
+  background-color: $background-color;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.empty {
+  height: 3vh;
+}
+
+.is-clickable {
+  cursor: pointer;
+}
+
+.has-default-cursor {
+  cursor: default !important;
+}
