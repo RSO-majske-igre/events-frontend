@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  eventsBaseUrl: "http://localhost:8080"
+  eventsBaseUrl: "http://localhost:8080",
+  participantsBaseUrl: "http://localhost:8081"
 };
 
 /*
