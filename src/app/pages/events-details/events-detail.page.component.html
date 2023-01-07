@@ -1,0 +1,49 @@
+<main class="p-4">
+  <form [formGroup]="eventFormGroup" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label">Event id</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="id">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Ime dogodka</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="eventName">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Opis</label>
+      <div class="control">
+        <textarea class="input textarea is-disabled" formControlName="description"></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Opis ekipe</label>
+      <div class="control">
+        <textarea class="input textarea is-disabled" formControlName="teamDescription"></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Začetni čas</label>
+      <div class="control">
+        <input class="input is-disabled" type="datetime-local" formControlName="startTime">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Cena dogodka</label>
+      <div class="control">
+        <input class="input is-disabled" type="number" formControlName="fee">
+      </div>
+    </div>
+
+    <button type="submit" class="button is-fullwidth is-primary">Shrani dogodek</button>
+  </form>
+
+
+</main>

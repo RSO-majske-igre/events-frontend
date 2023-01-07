@@ -1,5 +1,9 @@
 <main class="p-4" [ngSwitch]="componentState">
   <div *ngSwitchCase="'loaded'">
+    <button class="button is-primary is-outlined is-fullwidth mb-4" [routerLink]="['/events', 'new']">
+      Dodaj dogodek
+    </button>
+
     <nav class="pagination" role="navigation" aria-label="pagination">
       <ul class="pagination-list">
         <li *ngFor="let page of getPagesForPagination()">
@@ -13,7 +17,7 @@
         <div style="display: flex; justify-content: space-between; align-items: flex-start">
           <h1 class="title is-3">{{event.eventName}}</h1>
           <div class="buttons">
-            <button class="button is-warning">
+            <button [routerLink]="['/events', event.id]" class="button is-warning">
               Uredi
             </button>
           </div>
