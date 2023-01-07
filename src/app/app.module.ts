@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {EventsListPageComponent} from "./pages/events-page/events-list.page.component";
+import {EventsListPageComponent} from "./pages/events/events-page/events-list.page.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {EventsDetailPageComponent} from "./pages/events-details/events-detail.page.component";
+import {EventsDetailPageComponent} from "./pages/events/events-details/events-detail.page.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ParticipantsListPageComponent} from "./pages/participants/participants-list/participants-list.page.component";
 
 const pages = [
   EventsListPageComponent,
-  EventsDetailPageComponent
+  EventsDetailPageComponent,
+  ParticipantsListPageComponent
 ]
 
 @NgModule({

@@ -1,0 +1,46 @@
+<main class="p-4" [ngSwitch]="componentState">
+  <div *ngSwitchCase="'loaded'">
+    <button class="button is-primary is-outlined is-fullwidth mb-4" [routerLink]="['/events', 'new']">
+      Dodaj dogodek
+    </button>
+
+    <nav class="pagination" role="navigation" aria-label="pagination">
+      <ul class="pagination-list">
+        <li *ngFor="let page of getPagesForPagination()">
+          <a class="pagination-link" [ngClass]="{'is-current': page === currentPage}" (click)="getParticipants(page)" >{{page}}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div *ngFor="let participant of participants" class="mb-3 box">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <h1 class="title is-3">{{participant.name}}</h1>
+          <div class="buttons">
+            <button [routerLink]="['/participants', participant.id]" class="button is-warning">
+              Uredi
+            </button>
+          </div>
+        </div>
+        <div>
+          Študentski dom: <b>{{participant.dormName}}</b>
+        </div>
+        <div>
+          Email: <b>{{participant.email}}</b>
+        </div>
+        <div>
+          Telefon: <b>{{participant.phone}}</b>
+        </div>
+        <div>
+          Naslov: <b>{{participant.addressLine1}} {{participant.addressLine2}}, {{participant.addressPostalCode}} {{participant.addressCity}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'loading'">
+    Nalagam
+  </div>
+  <div *ngSwitchCase="'error'">
+    Napaka pri pridobivanju podatkov
+  </div>
+</main>

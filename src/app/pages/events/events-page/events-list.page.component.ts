@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {EventsApiService} from "../../api/events/services/events-api.service";
+import {EventsApiService} from "../../../api/events/services/events-api.service";
 import {Observable} from "rxjs";
-import {PageDto} from "../../api/events/model/page.model";
-import {EventDto} from "../../api/events";
-import {ComponentState} from "../../types/component-state.type";
+import {PageDto} from "../../../api/events/model/page.model";
+import {EventDto} from "../../../api/events";
+import {ComponentState} from "../../../types/component-state.type";
 
 @Component({
   selector: 'app-events-list',

@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {EventsApiService} from "../../api/events/services/events-api.service";
+import {EventsApiService} from "../../../api/events/services/events-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ComponentState} from "../../types/component-state.type";
+import {ComponentState} from "../../../types/component-state.type";
 import {BehaviorSubject} from "rxjs";
-import {EventDto} from "../../api/events";
+import {EventDto} from "../../../api/events";
 import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
