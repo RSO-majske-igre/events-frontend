@@ -8,11 +8,13 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {EventsDetailPageComponent} from "./pages/events/events-details/events-detail.page.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ParticipantsListPageComponent} from "./pages/participants/participants-list/participants-list.page.component";
+import {ParticipantsDetailPageComponent} from "./pages/participants/participants-add/participants-detail-page.component";
 
 const pages = [
   EventsListPageComponent,
   EventsDetailPageComponent,
-  ParticipantsListPageComponent
+  ParticipantsListPageComponent,
+  ParticipantsDetailPageComponent
 ]
 
 @NgModule({

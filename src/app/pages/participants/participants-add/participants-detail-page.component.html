@@ -1,0 +1,67 @@
+<main class="p-4">
+  <form [formGroup]="participantFormGroup" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label">Participant id: {{participant?.id}}</label>
+    </div>
+
+    <div class="field">
+      <label class="label">Ime in priimek</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="name">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="email"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Telefon</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="phone"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Dom</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="dormName"/>
+      </div>
+    </div>
+
+    <h2 class="subtitle is-3">Naslov</h2>
+    <div class="field">
+      <label class="label">Ulica in hišna številka</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="addressLine1"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <input class="input is-disabled" formControlName="addressLine2"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Mesto</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="addressCity"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Poštna številka</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="addressPostalCode"/>
+      </div>
+    </div>
+
+    <button type="submit" class="button is-fullwidth is-primary mt-6 mb-6">Shrani dogodek</button>
+  </form>
+
+
+</main>
