@@ -1,5 +1,5 @@
 <main class="p-4">
-  <form [formGroup]="participantFormGroup" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" [formGroup]="participantFormGroup">
     <div class="field">
       <label class="label">Participant id: {{participant?.id}}</label>
     </div>
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <button type="submit" class="button is-fullwidth is-primary mt-6 mb-6">Shrani dogodek</button>
+    <button class="button is-fullwidth is-primary mt-6 mb-6" type="submit">Shrani dogodek</button>
   </form>
 
 

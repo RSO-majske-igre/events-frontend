@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {ParticipantsApiService} from "../../../api/participants/services/participants-api.service";
-import {EventDto} from "../../../api/events";
 import {ComponentState} from "../../../types/component-state.type";
 import {ParticipantDto} from "../../../api/participants";
 
@@ -8,7 +7,7 @@ import {ParticipantDto} from "../../../api/participants";
   selector: 'app-participants-list',
   templateUrl: 'participants-list.page.component.html'
 })
-export class ParticipantsListPageComponent  implements  OnInit{
+export class ParticipantsListPageComponent implements OnInit {
   public participants: ParticipantDto[] = [];
   public currentPage = 1;
   public allPages = 1;
@@ -36,7 +35,7 @@ export class ParticipantsListPageComponent  implements  OnInit{
 
   public getPagesForPagination(): number[] {
     const array: number[] = [];
-    for(let i = 0; i < this.allPages; i++) {
+    for (let i = 0; i < this.allPages; i++) {
       array.push(i);
     }
     return array;

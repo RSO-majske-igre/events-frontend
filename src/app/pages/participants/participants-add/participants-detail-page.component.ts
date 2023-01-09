@@ -3,7 +3,6 @@ import {ParticipantsApiService} from "../../../api/participants/services/partici
 import {ActivatedRoute, Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 import {ComponentState} from "../../../types/component-state.type";
-import {EventDto} from "../../../api/events";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ParticipantDto} from "../../../api/participants";
 

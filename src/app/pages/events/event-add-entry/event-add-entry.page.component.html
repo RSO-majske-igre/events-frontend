@@ -1,0 +1,20 @@
+<div class="box m-4">
+  <table class="table is-fullwidth">
+    <thead>
+    <tr>
+      <th>Ime priimek</th>
+      <th>Dom</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="participants">
+    <tr *ngFor="let participant of participants">
+      <td>{{participant.name}}</td>
+      <td>{{participant.dormName}}</td>
+      <td class="is-narrow">
+        <button class="button is-primary is-small is-rounded">Dodaj</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

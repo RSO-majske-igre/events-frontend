@@ -1,13 +1,14 @@
-<main class="p-4" [ngSwitch]="componentState">
+<main [ngSwitch]="componentState" class="p-4">
   <div *ngSwitchCase="'loaded'">
-    <button class="button is-primary is-outlined is-fullwidth mb-4" [routerLink]="['/participants', 'new']">
+    <button [routerLink]="['/participants', 'new']" class="button is-primary is-outlined is-fullwidth mb-4">
       Dodaj udeleženca
     </button>
 
-    <nav class="pagination" role="navigation" aria-label="pagination">
+    <nav aria-label="pagination" class="pagination" role="navigation">
       <ul class="pagination-list">
         <li *ngFor="let page of getPagesForPagination()">
-          <a class="pagination-link" [ngClass]="{'is-current': page === currentPage}" (click)="getParticipants(page)" >{{page}}</a>
+          <a (click)="getParticipants(page)" [ngClass]="{'is-current': page === currentPage}"
+             class="pagination-link">{{page}}</a>
         </li>
       </ul>
     </nav>
@@ -32,7 +33,8 @@
           Telefon: <b>{{participant.phone}}</b>
         </div>
         <div>
-          Naslov: <b>{{participant.addressLine1}} {{participant.addressLine2}}, {{participant.addressPostalCode}} {{participant.addressCity}}</b>
+          Naslov: <b>{{participant.addressLine1}} {{participant.addressLine2}}
+          , {{participant.addressPostalCode}} {{participant.addressCity}}</b>
         </div>
       </div>
     </div>

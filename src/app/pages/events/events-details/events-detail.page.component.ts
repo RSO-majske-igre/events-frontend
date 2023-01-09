@@ -5,6 +5,7 @@ import {ComponentState} from "../../../types/component-state.type";
 import {BehaviorSubject} from "rxjs";
 import {EventDto} from "../../../api/events";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ParticipantsApiService} from "../../../api/participants/services/participants-api.service";
 
 @Component({
   selector: 'app-events-detail',
@@ -19,7 +20,7 @@ export class EventsDetailPageComponent implements OnInit {
   public eventFormGroup: FormGroup;
 
 
-  constructor(private eventsApiService: EventsApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private eventsApiService: EventsApiService, private participantsApiService: ParticipantsApiService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.eventFormGroup = this.formGroupFromObject();
   }
 
@@ -27,15 +28,7 @@ export class EventsDetailPageComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => this.eventId$.next(params['id'] && params['id'] !== 'new' ? params['id'] : null));
     this.eventId$.subscribe(eventId => {
       if (eventId) {
-        this.componentState = "loading";
-        this.eventsApiService.getEvent(eventId).subscribe({
-          next: event => {
-            this.event = event;
-            this.eventFormGroup = this.formGroupFromObject(event);
-            this.componentState = "loaded";
-          },
-          error: () => this.componentState = "error"
-        })
+        this.getEvent(eventId);
       } else {
         this.event = undefined;
       }
@@ -59,4 +52,16 @@ export class EventsDetailPageComponent implements OnInit {
     });
 
   onSubmit = () => this.eventsApiService.upsertEvent(this.eventFormGroup.value as EventDto).subscribe(e => this.router.navigate(['/events']));
+
+  private getEvent(eventId: string): void {
+    this.componentState = "loading";
+    this.eventsApiService.getEvent(eventId).subscribe({
+      next: event => {
+        this.event = event;
+        this.eventFormGroup = this.formGroupFromObject(event);
+        this.componentState = "loaded";
+      },
+      error: () => this.componentState = "error"
+    })
+  }
 }

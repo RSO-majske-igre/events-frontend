@@ -1,7 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsApiService} from "../../../api/events/services/events-api.service";
-import {Observable} from "rxjs";
-import {PageDto} from "../../../api/events/model/page.model";
 import {EventDto} from "../../../api/events";
 import {ComponentState} from "../../../types/component-state.type";
 
@@ -16,7 +14,8 @@ export class EventsListPageComponent implements OnInit {
   public allPages = 1;
   public componentState: ComponentState = "default";
 
-  constructor(private eventsApi: EventsApiService) {}
+  constructor(private eventsApi: EventsApiService) {
+  }
 
   ngOnInit() {
     this.getEvents();
@@ -37,7 +36,7 @@ export class EventsListPageComponent implements OnInit {
 
   public getPagesForPagination(): number[] {
     const array: number[] = [];
-    for(let i = 0; i < this.allPages; i++) {
+    for (let i = 0; i < this.allPages; i++) {
       array.push(i);
     }
     return array;

@@ -9,27 +9,27 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { EntryDto } from './entryDto';
-import { EventResultDto } from './eventResultDto';
+import {EntryDto} from './entryDto';
+import {EventResultDto} from './eventResultDto';
 
 
 /**
  * EventDto to be saved
  */
 export interface EventDto {
-    id?: string;
-    eventName: string;
-    description: string;
-    startTime: string;
-    fee: number;
-    teamDescription: string;
-    imageUrl?: string;
-    locationId?: string;
-    locationName: string;
-    locationUrl?: string;
-    geoLat?: string;
-    geoLon?: string;
-    entries?: Set<EntryDto>;
-    results?: Set<EventResultDto>;
+  id?: string;
+  eventName: string;
+  description: string;
+  startTime: string;
+  fee: number;
+  teamDescription: string;
+  imageUrl?: string;
+  locationId?: string;
+  locationName: string;
+  locationUrl?: string;
+  geoLat?: string;
+  geoLon?: string;
+  entries?: Set<EntryDto>;
+  results?: Set<EventResultDto>;
 }
 

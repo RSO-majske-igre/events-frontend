@@ -1,18 +1,18 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav aria-label="main navigation" class="navbar" role="navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" [routerLink]="['/events']">
-      <img src="https://majske-igre.si/wp-content/uploads/2022/03/Majske-igre-logo-BASIC-C-Barvna.svg" width="150"
-           height="50" style="max-height: 150px">
+    <a [routerLink]="['/events']" class="navbar-item">
+      <img height="50" src="https://majske-igre.si/wp-content/uploads/2022/03/Majske-igre-logo-BASIC-C-Barvna.svg"
+           style="max-height: 150px" width="150">
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a aria-expanded="false" aria-label="menu" class="navbar-burger" data-target="navbarBasicExample" role="button">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div class="navbar-menu" id="navbarBasicExample">
     <div class="navbar-start">
       <a [routerLink]="['/events']" class="navbar-item">
         Dogodki

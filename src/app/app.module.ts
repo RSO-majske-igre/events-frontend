@@ -1,26 +1,36 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {EventsListPageComponent} from "./pages/events/events-page/events-list.page.component";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {EventsDetailPageComponent} from "./pages/events/events-details/events-detail.page.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ParticipantsListPageComponent} from "./pages/participants/participants-list/participants-list.page.component";
-import {ParticipantsDetailPageComponent} from "./pages/participants/participants-add/participants-detail-page.component";
+import {
+  ParticipantsDetailPageComponent
+} from "./pages/participants/participants-add/participants-detail-page.component";
+import {ParticipantsEventComponent} from "./components/events/participants-event/participants-event.component";
+import {EventAddEntryPageComponent} from "./pages/events/event-add-entry/event-add-entry.page.component";
 
 const pages = [
   EventsListPageComponent,
   EventsDetailPageComponent,
+  EventAddEntryPageComponent,
   ParticipantsListPageComponent,
-  ParticipantsDetailPageComponent
+  ParticipantsDetailPageComponent,
+]
+
+const components = [
+  ParticipantsEventComponent
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...pages
+    ...pages,
+    ...components
   ],
   imports: [
     BrowserModule,
@@ -32,4 +42,5 @@ const pages = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

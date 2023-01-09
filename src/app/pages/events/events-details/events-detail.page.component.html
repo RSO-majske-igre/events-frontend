@@ -1,5 +1,5 @@
 <main class="p-4">
-  <form [formGroup]="eventFormGroup" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" [formGroup]="eventFormGroup">
     <div class="field">
       <label class="label">Event id: {{event?.id}}</label>
     </div>
@@ -28,14 +28,14 @@
     <div class="field">
       <label class="label">Začetni čas</label>
       <div class="control">
-        <input class="input is-disabled" type="datetime-local" formControlName="startTime">
+        <input class="input is-disabled" formControlName="startTime" type="datetime-local">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Cena dogodka</label>
       <div class="control">
-        <input class="input is-disabled" type="number" formControlName="fee">
+        <input class="input is-disabled" formControlName="fee" type="number">
       </div>
     </div>
 
@@ -43,12 +43,29 @@
     <div class="field">
       <label class="label">Ime lokacije</label>
       <div class="control">
-        <input class="input is-disabled" type="text" formControlName="locationName">
+        <input class="input is-disabled" formControlName="locationName" type="text">
       </div>
     </div>
 
-    <button type="submit" class="button is-fullwidth is-primary mt-6 mb-6">Shrani dogodek</button>
+    <button class="button is-fullwidth is-primary mt-6 mb-6" type="submit">Shrani dogodek</button>
   </form>
 
+  <div class="columns">
+    <div class="column">
+
+      <h2 class="subtitle is-2">
+        Udeleženci
+      </h2>
+    </div>
+    <div *ngIf="event" class="column is-narrow">
+      <button [routerLink]="['/events', event.id, 'entry']" class="button is-secondary is-outlined">
+        Dodaj novo prijavo
+      </button>
+    </div>
+
+  </div>
+
+  <app-events-participants *ngFor="let entry of event?.entries"
+                           [participants]="entry.participants"></app-events-participants>
 
 </main>
