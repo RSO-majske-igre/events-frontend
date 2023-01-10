@@ -13,6 +13,7 @@ import {
 } from "./pages/participants/participants-add/participants-detail-page.component";
 import {ParticipantsEventComponent} from "./components/events/participants-event/participants-event.component";
 import {EventAddEntryPageComponent} from "./pages/events/event-add-entry/event-add-entry.page.component";
+import {ParticipantPartOfEntryPipe} from "./pipes/participant-part-of-entry.pipe";
 
 const pages = [
   EventsListPageComponent,
@@ -26,11 +27,16 @@ const components = [
   ParticipantsEventComponent
 ]
 
+const pipes = [
+  ParticipantPartOfEntryPipe
+]
+
 @NgModule({
   declarations: [
     AppComponent,
     ...pages,
-    ...components
+    ...components,
+    ...pipes
   ],
   imports: [
     BrowserModule,

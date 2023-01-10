@@ -22,5 +22,9 @@ export interface EntryDto {
   accepted: boolean;
   participants?: Set<ParticipantDto>;
   invoices?: Set<string>;
+  eventId: string;
+  invoiceIds?: string[];
+  place?: number;
+  points?: number;
 }
 

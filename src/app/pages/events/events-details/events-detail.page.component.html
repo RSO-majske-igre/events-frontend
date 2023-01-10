@@ -65,7 +65,10 @@
 
   </div>
 
-  <app-events-participants *ngFor="let entry of event?.entries"
-                           [participants]="entry.participants"></app-events-participants>
-
+  <div *ngIf="event?.id">
+    <div style="margin-bottom: 2em" *ngFor="let entry of event?.entries">
+      <app-events-participants
+        [entry]="entry" [eventId]="event!.id!"></app-events-participants>
+    </div>
+  </div>
 </main>

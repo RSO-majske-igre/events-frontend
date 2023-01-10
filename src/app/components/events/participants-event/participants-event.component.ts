@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {ParticipantDto} from "../../../api/participants";
+import {EntryDto} from "../../../api/events";
 
 
 @Component({
@@ -7,5 +8,6 @@ import {ParticipantDto} from "../../../api/participants";
   templateUrl: 'participants-event.component.html'
 })
 export class ParticipantsEventComponent {
-  @Input() public participants: Set<ParticipantDto> | undefined;
+  @Input() public entry!: EntryDto;
+  @Input() public eventId!: string;
 }

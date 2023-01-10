@@ -1,4 +1,44 @@
 <div class="box m-4">
+  <div>
+    Entry ID: {{entry?.id}}
+  </div>
+
+  <form [formGroup]="entryFormGroup">
+    <div class="field">
+      <label class="checkbox">
+        <input type="checkbox" formControlName="paid">
+        Plačano</label>
+    </div>
+    <div class="field">
+      <label class="checkbox">
+        <input type="checkbox" formControlName="accepted">
+        Potrjeno</label>
+    </div>
+  </form>
+
+</div>
+
+<div class="box m-4">
+  <h2 class="subtitle is-3">Dodani udeleženci</h2>
+  <table class="table is-fullwidth">
+    <thead>
+    <tr>
+      <th>Ime priimek</th>
+      <th>Dom</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="participants">
+    <tr *ngFor="let participant of (participants | participantPartOfEntryPipe : true)">
+      <td>{{participant.name}}</td>
+      <td>{{participant.dormName}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="box m-4">
+  <h2 class="subtitle is-3">Vsi udeleženci</h2>
   <table class="table is-fullwidth">
     <thead>
     <tr>
@@ -8,13 +48,19 @@
     </tr>
     </thead>
     <tbody *ngIf="participants">
-    <tr *ngFor="let participant of participants">
+    <tr *ngFor="let participant of (participants | participantPartOfEntryPipe : false)">
       <td>{{participant.name}}</td>
       <td>{{participant.dormName}}</td>
       <td class="is-narrow">
-        <button class="button is-primary is-small is-rounded">Dodaj</button>
+        <button class="button is-success is-small is-rounded" (click)="participant.selected = true">Dodaj</button>
       </td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<div class="m-4">
+  <button (click)="saveEntry()" class="button is-primary is-fullwidth">
+    Shrani
+  </button>
 </div>
