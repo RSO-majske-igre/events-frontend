@@ -1,0 +1,39 @@
+<main class="p-4">
+  <form (ngSubmit)="onSubmit()" [formGroup]="locationFormGroup">
+    <div class="field">
+      <label class="label">Event id: {{location?.id}}</label>
+    </div>
+
+    <div class="field">
+      <label class="label">Ime lokacije</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="locationName">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Povezava do lokacije</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="locationUrl">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Latituda</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="geoLat" type="number">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Longituda</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="geoLon" type="number">
+      </div>
+    </div>
+
+
+
+    <button class="button is-fullwidth is-primary mt-6 mb-6" type="submit">Shrani dogodek</button>
+  </form>
+</main>

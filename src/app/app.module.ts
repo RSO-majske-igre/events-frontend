@@ -14,6 +14,8 @@ import {
 import {ParticipantsEventComponent} from "./components/events/participants-event/participants-event.component";
 import {EventAddEntryPageComponent} from "./pages/events/event-add-entry/event-add-entry.page.component";
 import {ParticipantPartOfEntryPipe} from "./pipes/participant-part-of-entry.pipe";
+import {LocationsListPageComponent} from "./pages/locations/locations-list/locations-list.page.component";
+import {LocationsDetailPageComponent} from "./pages/locations/locations-detail/locations-detail.page.component";
 
 const pages = [
   EventsListPageComponent,
@@ -21,6 +23,8 @@ const pages = [
   EventAddEntryPageComponent,
   ParticipantsListPageComponent,
   ParticipantsDetailPageComponent,
+  LocationsListPageComponent,
+  LocationsDetailPageComponent
 ]
 
 const components = [

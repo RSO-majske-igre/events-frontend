@@ -7,6 +7,8 @@ import {
   ParticipantsDetailPageComponent
 } from "./pages/participants/participants-add/participants-detail-page.component";
 import {EventAddEntryPageComponent} from "./pages/events/event-add-entry/event-add-entry.page.component";
+import {LocationsListPageComponent} from "./pages/locations/locations-list/locations-list.page.component";
+import {LocationsDetailPageComponent} from "./pages/locations/locations-detail/locations-detail.page.component";
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: 'participants/:id',
     component: ParticipantsDetailPageComponent
+  },
+  {
+    path: 'locations',
+    component: LocationsListPageComponent
+  },
+  {
+    path: 'locations/:id',
+    component: LocationsDetailPageComponent
   },
 ];
 

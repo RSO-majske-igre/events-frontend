@@ -19,11 +19,7 @@ export class EntryApiService {
   }
 
   public postEntry(entry: any): Observable<EntryDto> {
-    console.log(entry);
     entry.participants = Array.from<ParticipantDto>((entry as EntryDto).participants ?? []);
-    // return entry.id
-    //   ? this.http.put<EntryDto>(this.baseUrl, entry)
-    //   : this.http.post<EntryDto>(this.baseUrl, entry);
     return this.http.post<EntryDto>(this.baseUrl, entry);
   }
 }

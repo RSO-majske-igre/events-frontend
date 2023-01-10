@@ -8,6 +8,7 @@ import {EntryDto} from "../../../api/events";
 import {EntryApiService} from "../../../api/events/services/entry-api.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {SelectableParticipant} from "../../../models";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-event-add-entry',
@@ -48,7 +49,6 @@ export class EventAddEntryPageComponent implements OnInit {
   }
 
   public getParticipants(page = 0, perPage = 100): void {
-    console.log("tuki")
     this.participantApiService.getParticipants(page, perPage).subscribe({
       next: participants => {
         this.participants = [
@@ -71,7 +71,6 @@ export class EventAddEntryPageComponent implements OnInit {
           e.selected = true;
           return e;
         });
-        console.log("tudi tukaj")
         this.getParticipants();
         this.entryFormGroup = this.createEntryFormGroup(this.entry);
       }
@@ -94,7 +93,13 @@ export class EventAddEntryPageComponent implements OnInit {
       fg.id = this.entryId;
     }
 
-    this.entryApiService.postEntry(fg).subscribe(x => console.log(x));
+    this.entryApiService.postEntry(fg).subscribe({
+      next: entry => this.router.navigate(['/events', this.eventId, 'entry', entry.eventId]),
+      error: (error: HttpErrorResponse) => {
+        this.componentState = 'error';
+        error.error.exceptionMessage
+      }
+    });
   }
 }
 

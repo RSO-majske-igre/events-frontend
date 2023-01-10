@@ -1,0 +1,32 @@
+<main [ngSwitch]="componentState" class="p-4">
+  <div *ngSwitchCase="'loaded'">
+    <button [routerLink]="['/locations', 'new']" class="button is-primary is-outlined is-fullwidth mb-4">
+      Dodaj lokacijo
+    </button>
+
+    <div *ngFor="let location of locations" class="mb-3 box">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <h1 class="title is-3">{{location.locationName}}</h1>
+          <div class="buttons">
+            <button [routerLink]="['/locations', location.id]" class="button is-warning">
+              Uredi
+            </button>
+          </div>
+        </div>
+        <div>
+          Geografska pozicija: <b>{{location.geoLat}} {{location.geoLon}}</b>
+        </div>
+        <div>
+          Povezava: <b>{{location.locationUrl}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'loading'">
+    Nalagam
+  </div>
+  <div *ngSwitchCase="'error'">
+    Napaka pri pridobivanju podatkov
+  </div>
+</main>
