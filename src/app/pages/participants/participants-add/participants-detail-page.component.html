@@ -1,5 +1,5 @@
 <main class="p-4">
-  <form (ngSubmit)="onSubmit()" [formGroup]="participantFormGroup">
+  <form *ngIf="componentState === 'loaded' && dormState === 'loaded'" (ngSubmit)="onSubmit()" [formGroup]="participantFormGroup">
     <div class="field">
       <label class="label">Participant id: {{participant?.id}}</label>
     </div>
@@ -22,13 +22,6 @@
       <label class="label">Telefon</label>
       <div class="control">
         <input class="input is-disabled" formControlName="phone"/>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Dom</label>
-      <div class="control">
-        <input class="input is-disabled" formControlName="dormName"/>
       </div>
     </div>
 
@@ -57,6 +50,20 @@
       <label class="label">Poštna številka</label>
       <div class="control">
         <input class="input is-disabled" formControlName="addressPostalCode"/>
+      </div>
+    </div>
+
+    <h2 class="subtitle is-3">Dom</h2>
+    <div class="field">
+      <label class="label">Ime doma</label>
+      <div class="control">
+        <input class="input is-disabled" [value]="selectedDorm?.dormName">
+      </div>
+
+      <div style="max-height: 20vh; overflow-x: scroll">
+        <button *ngFor="let dorm of dorms" type="button" (click)="selectedDorm = dorm" class="button">
+          {{dorm.dormName}}
+        </button>
       </div>
     </div>
 

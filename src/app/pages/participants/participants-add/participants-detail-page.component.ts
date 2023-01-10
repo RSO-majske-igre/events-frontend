@@ -4,7 +4,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 import {ComponentState} from "../../../types/component-state.type";
 import {FormControl, FormGroup} from "@angular/forms";
-import {ParticipantDto} from "../../../api/participants";
+import {DormDto, ParticipantDto} from "../../../api/participants";
+import {LocationDto} from "../../../api/events/model/locationDto";
+import {DormsApiService} from "../../../api/participants/services/dorms-api.service";
 
 @Component({
   selector: 'app-participants-add',
@@ -18,7 +20,16 @@ export class ParticipantsDetailPageComponent implements OnInit {
 
   public participantFormGroup: FormGroup;
 
-  constructor(private participantApiService: ParticipantsApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+  public dorms: DormDto[] = [];
+  public selectedDorm?: DormDto;
+  public dormState: ComponentState = 'default';
+
+  constructor(
+    private participantApiService: ParticipantsApiService,
+    private dormApi: DormsApiService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.participantFormGroup = this.formGroupFromObject();
   }
 
@@ -30,6 +41,10 @@ export class ParticipantsDetailPageComponent implements OnInit {
         this.participantApiService.getParticipant(participantId).subscribe({
           next: participant => {
             this.participant = participant;
+            this.selectedDorm = {
+              id: this.participant.dormId,
+              dormName: this.participant.dormName,
+            }
             this.participantFormGroup = this.formGroupFromObject(participant);
             this.componentState = "loaded";
           },
@@ -38,7 +53,8 @@ export class ParticipantsDetailPageComponent implements OnInit {
       } else {
         this.participant = undefined;
       }
-    })
+    });
+    this.getDorms();
   }
 
   formGroupFromObject = (object?: ParticipantDto): FormGroup =>
@@ -56,5 +72,21 @@ export class ParticipantsDetailPageComponent implements OnInit {
       addressPostalCode: new FormControl(object?.addressPostalCode ?? ''),
     });
 
-  onSubmit = () => this.participantApiService.upsertParticipant(this.participantFormGroup.value as ParticipantDto).subscribe(e => this.router.navigate(['/participants']));
+  onSubmit() {
+    const participant = this.participantFormGroup.value as ParticipantDto;
+    participant.dormId = this.selectedDorm?.id ?? participant.dormId;
+    participant.dormName = this.selectedDorm?.dormName ?? participant.dormName;
+    this.participantApiService.upsertParticipant(participant).subscribe(e => this.router.navigate(['/participants']));
+  }
+
+  private getDorms() {
+    this.dormState = "loading";
+    this.dormApi.getDorms().subscribe({
+      next: dorms => {
+        this.dorms = dorms;
+        this.dormState = "loaded";
+      },
+      error: () => this.dormState = 'error'
+    });
+  }
 }
