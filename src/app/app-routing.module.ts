@@ -9,6 +9,8 @@ import {
 import {EventAddEntryPageComponent} from "./pages/events/event-add-entry/event-add-entry.page.component";
 import {LocationsListPageComponent} from "./pages/locations/locations-list/locations-list.page.component";
 import {LocationsDetailPageComponent} from "./pages/locations/locations-detail/locations-detail.page.component";
+import {DormListPageComponent} from "./pages/dorms/dorm-list/dorm-list.page.component";
+import {DormDetailsPageComponent} from "./pages/dorms/dorm-details/dorm-details.page.component";
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: 'locations/:id',
     component: LocationsDetailPageComponent
+  },
+  {
+    path: 'dorms',
+    component: DormListPageComponent
+  },
+  {
+    path: 'dorms/:id',
+    component: DormDetailsPageComponent
   },
 ];
 

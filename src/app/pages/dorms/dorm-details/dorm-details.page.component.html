@@ -1,0 +1,15 @@
+<main class="p-4" *ngIf="componentState === 'loaded'">
+  <form (ngSubmit)="onSubmit()" [formGroup]="dormFormGroup">
+    <div class="field">
+      <label class="label">Event id: {{dorm?.id}}</label>
+    </div>
+
+    <div class="field">
+      <label class="label">Ime doma</label>
+      <div class="control">
+        <input class="input is-disabled" formControlName="dormName">
+      </div>
+    </div>
+    <button class="button is-fullwidth is-primary mt-6 mb-6" type="submit">Shrani dogodek</button>
+  </form>
+</main>

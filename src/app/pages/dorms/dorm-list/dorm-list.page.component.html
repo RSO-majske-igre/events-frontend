@@ -1,0 +1,26 @@
+<main [ngSwitch]="componentState" class="p-4">
+  <div *ngSwitchCase="'loaded'">
+    <button [routerLink]="['/dorms', 'new']" class="button is-primary is-outlined is-fullwidth mb-4">
+      Dodaj dom
+    </button>
+
+    <div *ngFor="let dorm of dorms" class="mb-3 box">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <h1 class="title is-3">{{dorm.dormName}}</h1>
+          <div class="buttons">
+            <button [routerLink]="['/dorms', dorm.id]" class="button is-warning">
+              Uredi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'loading'">
+    Nalagam
+  </div>
+  <div *ngSwitchCase="'error'">
+    Napaka pri pridobivanju podatkov
+  </div>
+</main>

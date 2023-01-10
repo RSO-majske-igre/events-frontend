@@ -16,6 +16,8 @@ import {EventAddEntryPageComponent} from "./pages/events/event-add-entry/event-a
 import {ParticipantPartOfEntryPipe} from "./pipes/participant-part-of-entry.pipe";
 import {LocationsListPageComponent} from "./pages/locations/locations-list/locations-list.page.component";
 import {LocationsDetailPageComponent} from "./pages/locations/locations-detail/locations-detail.page.component";
+import {DormListPageComponent} from "./pages/dorms/dorm-list/dorm-list.page.component";
+import {DormDetailsPageComponent} from "./pages/dorms/dorm-details/dorm-details.page.component";
 
 const pages = [
   EventsListPageComponent,
@@ -24,7 +26,9 @@ const pages = [
   ParticipantsListPageComponent,
   ParticipantsDetailPageComponent,
   LocationsListPageComponent,
-  LocationsDetailPageComponent
+  LocationsDetailPageComponent,
+  DormListPageComponent,
+  DormDetailsPageComponent
 ]
 
 const components = [
