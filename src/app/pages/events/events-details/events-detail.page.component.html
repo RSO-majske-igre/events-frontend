@@ -1,4 +1,4 @@
-<main class="p-4">
+<main class="p-4" *ngIf="locationsState === 'loaded' && componentState === 'loaded'">
   <form (ngSubmit)="onSubmit()" [formGroup]="eventFormGroup">
     <div class="field">
       <label class="label">Event id: {{event?.id}}</label>
@@ -39,11 +39,17 @@
       </div>
     </div>
 
-    <h2 class="subtitle is-3">Lokacija dokodka</h2>
+    <h2 class="subtitle is-3">Lokacija dogodka</h2>
     <div class="field">
       <label class="label">Ime lokacije</label>
       <div class="control">
-        <input class="input is-disabled" formControlName="locationName" type="text">
+        <input class="input is-disabled" [value]="selectedLocation?.locationName">
+      </div>
+
+      <div style="max-height: 20vh; overflow-x: scroll">
+          <button *ngFor="let location of locations" type="button" (click)="selectedLocation = location" class="button">
+            {{location.locationName}}
+          </button>
       </div>
     </div>
 

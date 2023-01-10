@@ -1,11 +1,12 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsApiService} from "../../../api/events/services/events-api.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Event, Router} from "@angular/router";
 import {ComponentState} from "../../../types/component-state.type";
 import {BehaviorSubject} from "rxjs";
 import {EventDto} from "../../../api/events";
 import {FormControl, FormGroup} from "@angular/forms";
-import {ParticipantsApiService} from "../../../api/participants/services/participants-api.service";
+import {LocationApiService} from "../../../api/events/services/location-api.service";
+import {LocationDto} from "../../../api/events/model/locationDto";
 
 @Component({
   selector: 'app-events-detail',
@@ -16,11 +17,19 @@ export class EventsDetailPageComponent implements OnInit {
   public eventId$ = new BehaviorSubject<string | null>(null);
   public componentState: ComponentState = 'loaded';
   public event?: EventDto;
-
   public eventFormGroup: FormGroup;
 
+  public locations: LocationDto[] = [];
+  public selectedLocation?: LocationDto;
+  public locationsState: ComponentState = 'default';
 
-  constructor(private eventsApiService: EventsApiService, private participantsApiService: ParticipantsApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+
+  constructor(
+    private eventsApiService: EventsApiService,
+    private locationsApi: LocationApiService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.eventFormGroup = this.formGroupFromObject();
   }
 
@@ -32,7 +41,8 @@ export class EventsDetailPageComponent implements OnInit {
       } else {
         this.event = undefined;
       }
-    })
+    });
+    this.getLocations();
   }
 
   formGroupFromObject = (object?: EventDto): FormGroup =>
@@ -51,7 +61,15 @@ export class EventsDetailPageComponent implements OnInit {
       geoLon: new FormControl(object?.geoLon ?? ''),
     });
 
-  onSubmit = () => this.eventsApiService.upsertEvent(this.eventFormGroup.value as EventDto).subscribe(e => this.router.navigate(['/events']));
+  onSubmit(): void {
+    const event = this.eventFormGroup.value as EventDto;
+    event.locationId = this.selectedLocation?.id ?? event.locationId;
+    event.locationName = this.selectedLocation?.locationName ?? event.locationName;
+    this.eventsApiService.upsertEvent(event).subscribe({
+      next: () => this.router.navigate(['events']),
+      error: () => alert("Napaka")
+    });
+  }
 
   private getEvent(eventId: string): void {
     this.componentState = "loading";
@@ -59,9 +77,24 @@ export class EventsDetailPageComponent implements OnInit {
       next: event => {
         this.event = event;
         this.eventFormGroup = this.formGroupFromObject(event);
+        this.selectedLocation = {
+          id: event.locationId,
+          locationName: event.locationName
+        }
         this.componentState = "loaded";
       },
       error: () => this.componentState = "error"
     })
+  }
+
+  private getLocations() {
+    this.locationsState = "loading";
+    this.locationsApi.getLocations().subscribe({
+      next: locations => {
+        this.locations = locations;
+        this.locationsState = "loaded";
+      },
+      error: () => this.locationsState = 'error'
+    });
   }
 }
