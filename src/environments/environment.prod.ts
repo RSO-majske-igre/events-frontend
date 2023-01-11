@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  eventsBaseUrl: "TODO",
-  participantsBaseUrl: "TODO"
+  eventsBaseUrl: "http://${EVENTS_BACKEND}:8090",
+  participantsBaseUrl: "http://${USERS_BACKEND}:8110"
 };
