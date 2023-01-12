@@ -1,3 +1,8 @@
+# Fronend
+
+Fronend is a microservice that serves frontend web app. 
+Available at http://34.107.204.219/
+
 # FrontendAdmin
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
