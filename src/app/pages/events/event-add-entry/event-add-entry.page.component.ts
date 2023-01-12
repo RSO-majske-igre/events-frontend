@@ -94,7 +94,7 @@ export class EventAddEntryPageComponent implements OnInit {
     }
 
     this.entryApiService.postEntry(fg).subscribe({
-      next: entry => this.router.navigate(['/events', this.eventId, 'entry', entry.eventId]),
+      next: entry => this.router.navigate(['/events', this.eventId, 'entry', entry.id]),
       error: (error: HttpErrorResponse) => {
         this.componentState = 'error';
         error.error.exceptionMessage
